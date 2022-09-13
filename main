@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class Prog_Academy_Task {
+    public static void main(String[] args){
+
+        //   System.out.println(getSum(new int[]{}, 30));
+        double exchangeRate = userQuery("What is Bitcoin price today?");
+        double amountOfMoney = userQuery("How much $ do you have?");
+        System.out.println("You can buy " + roundDoubleDecimal(amountOfMoney/exchangeRate,7) + " BTC");
+    }
+
+    public static double userQuery(String outputString){
+        Scanner userEnteredData = new Scanner(System.in);
+        System.out.println(outputString);
+        String inputString = userEnteredData.next();
+        while ((!stringIsDouble(inputString))){
+            System.out.println("Please use only '1234567890.' chars!");
+            inputString = userEnteredData.next();
+        }
+        return Double.parseDouble(inputString);
+    }
+    public static boolean stringIsDouble (String stringForCheck) {
+        String doubleString = "1234567890.";
+        for (int i=1; i<=stringForCheck.length();i++){
+            String symbol = stringForCheck.substring(i-1,i);
+            if (!doubleString.contains(symbol)){
+                System.out.print("You used wrong char - '" + symbol + "'. ");
+                return false;
+            }
+        }
+        return true;
+    }
+    public static String roundDoubleDecimal(double roundingNumber, int roundDecimal){
+        String inputFormat = "%." + roundDecimal + "f";
+        return String.format(inputFormat,roundingNumber);
+    }
+}
