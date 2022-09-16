@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Prog_Academy_Task {
     public static void main(String[] args){
 
-        //   System.out.println(getSum(new int[]{}, 30));
         double exchangeRate = userQuery("What is Bitcoin price today?");
         double amountOfMoney = userQuery("How much $ do you have?");
         System.out.println("You can buy " + roundDoubleDecimal(amountOfMoney/exchangeRate,7) + " BTC");
